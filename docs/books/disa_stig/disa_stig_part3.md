@@ -38,14 +38,14 @@ Before you start, you'll need to refer back to Part 1 and apply the DISA STIG Se
     dnf -y remove httpd-manual
     dnf -y install mod_session
             
-    echo “MaxKeepAliveRequests 100” > /etc/httpd/conf.d/disa-apache-stig.conf
-	echo “SessionCookieName session path=/; HttpOnly; Secure;” >>  /etc/httpd/conf.d/disa-apache-stig.conf
-    echo “Session On” >>  /etc/httpd/conf.d/disa-apache-stig.conf
-    echo “SessionMaxAge 600” >>  /etc/httpd/conf.d/disa-apache-stig.conf
-    echo “SessionCryptoCipher aes256” >>  /etc/httpd/conf.d/disa-apache-stig.conf
-    echo “Timeout 10” >>  /etc/httpd/conf.d/disa-apache-stig.conf
-    echo “TraceEnable Off” >>  /etc/httpd/conf.d/disa-apache-stig.conf
-    echo “RequestReadTimeout 120” >> /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'MaxKeepAliveRequests 100' > /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'SessionCookieName session path=/; HttpOnly; Secure;' >>  /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'Session On' >>  /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'SessionMaxAge 600' >>  /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'SessionCryptoCipher aes256' >>  /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'Timeout 10' >>  /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'TraceEnable Off' >>  /etc/httpd/conf.d/disa-apache-stig.conf
+    echo 'RequestReadTimeout header=10 body=30' >> /etc/httpd/conf.d/disa-apache-stig.conf
 
     sed -i “s/^#LoadModule usertrack_module/LoadModule usertrack_module/g” /etc/httpd/conf.modules.d/00-optional.conf
     sed -i "s/proxy_module/#proxy_module/g" /etc/httpd/conf.modules.d/00-proxy.conf
